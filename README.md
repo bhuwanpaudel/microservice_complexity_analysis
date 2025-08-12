@@ -3,7 +3,7 @@
 A Python script to collect weekly or monthly architectural complexity indicators from a microservice.  
 - Number of declared dependencies 
 - Number of exposed API endpoints 
-- Number of unique cross-service calls 
+- Number of unique inter-service communications 
 
 Each snapshot is written to CSV with the full lists of endpoints, calls, and declared dependencies.
 
