@@ -14,7 +14,7 @@ Each snapshot is written to CSV with the full lists of endpoints, calls, and dec
 - Walks through a Maven, Node, Python, Go, and Gradle-based project.   
 - Inspects dependency files (`pom.xml`, `package.json`, `requirements.txt`, etc.).  
 - Parses annotations and routing calls to discover REST endpoints.  
-- Scans code for HTTP, gRPC, curl, and fetch calls to count cross-service interactions.   
+- Scans code for HTTP, gRPC, curl, and fetch calls to count inter-service communications.   
 - Checks out historical commits at weekly or monthly intervals to build a time series dataset.  
 - Outputs a CSV with per-snapshot complexity indicators and lists.    
 
