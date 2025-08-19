@@ -134,7 +134,7 @@ def count_endpoints(path):
                     continue
     return len(unique), sorted([f"{m} {p}" for m, p in unique])
 
-def count_cross_service_calls(path):
+def count_inter_service_calls(path):
     matches = set()
     for root, _, files in os.walk(path):
         if is_excluded_path(root):
@@ -183,7 +183,7 @@ def analyze_service(repo_path, csv_writer, date):
 
     for path in paths:
         ep_count, eps = count_endpoints(path)
-        call_count, calls = count_cross_service_calls(path)
+        call_count, calls = count_inter_service_calls(path)
         deps = count_dependencies(path)
 
         total_eps += ep_count
@@ -196,7 +196,7 @@ def analyze_service(repo_path, csv_writer, date):
     print(f"  Endpoints: {total_eps}")
     for ep in sorted(all_eps):
         print(f"    - {ep}")
-    print(f"  Cross-Service Calls: {len(all_calls)}")
+    print(f"  Inter-Service Communications: {len(all_calls)}")
     for c in sorted(all_calls):
         print(f"    - {c}")
     print(f"  Dependencies: {len(all_deps)}")
@@ -227,11 +227,12 @@ if __name__ == '__main__':
 
     with open(args.output, 'w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
-        writer.writerow(["Service", "Date", "Endpoints", "Dependencies", "CrossServiceCalls",
-                         "DependencyList", "EndpointList", "CrossServiceCallsList"])
+        writer.writerow(["Service", "Date", "Endpoints", "Dependencies", "InterServiceCommunications",
+                         "DependencyList", "EndpointList", "InterServiceCommunicationsList"])
         for commit, date in get_commits(args.repo_path, args.frequency, args.periods):
             subprocess.run(["git", "-C", args.repo_path, "checkout", "-q", commit], check=True)
             analyze_service(args.repo_path, writer, date)
 
     subprocess.run(["git", "-C", args.repo_path, "checkout", "-q", original_head], check=True)
+
     print(f"\nAnalysis complete.")
