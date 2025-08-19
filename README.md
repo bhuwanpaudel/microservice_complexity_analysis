@@ -5,7 +5,7 @@ A Python script to collect weekly or monthly architectural complexity indicators
 - Number of exposed API endpoints 
 - Number of unique inter-service communications 
 
-Each snapshot is written to CSV with the full lists of endpoints, calls, and declared dependencies.
+Each snapshot is written to CSV with the full lists of API endpoints, inter-service communications, and declared dependencies.
 
 ---
 
