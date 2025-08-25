@@ -1,5 +1,7 @@
-# Microservice Complexity Analysis
+This analysis is a part of a study entitled "Temporal Evolution of Architectural Complexity and Technical Debt in Microservices: An Exploratory Case Study."
+Authors: Bhuwan Paudel, Javier Gonzalez-Huerta, and Ehsan Zabardast
 
+# Microservice Complexity Analysis
 A Python script to collect weekly or monthly architectural complexity indicators from a microservice.  
 - Number of declared dependencies 
 - Number of exposed API endpoints 
